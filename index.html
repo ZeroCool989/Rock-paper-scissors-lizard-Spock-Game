@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Lizard Spock</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <!-- Title of the Game -->
+    <h1>Rock Paper Scissors Lizard Spock Game</h1>
+
+    <!-- Scoreboard for displaying scores -->
+    <div id="scoreboard">
+        <div>Player Score: <span id="playerScore">0</span></div>
+        <div>Computer Score: <span id="computerScore">0</span></div>
+    </div>
+
+    <!-- Buttons for player to make a choice -->
+    <div id="choices">
+        <button onclick="playerChoice('rock')">
+            <img src="assets/images/rock.png" alt="Rock">
+        </button>
+        <button onclick="playerChoice('paper')">
+            <img src="assets/images/paper.png" alt="Paper">
+        </button>
+        <button onclick="playerChoice('scissors')">
+            <img src="assets/images/scissors.png" alt="Scissors">
+        </button>
+        <button onclick="playerChoice('lizard')">
+            <img src="assets/images/lizard.png" alt="Lizard">
+        </button>
+        <button onclick="playerChoice('spock')">
+            <img src="assets/images/spock.png" alt="Spock">
+        </button>
+    </div>
+
+    <!-- Paragraph to display the result of each round -->
+    <p id="result"></p>
+
+    <!-- Button to reset the game -->
+    <button id="resetButton" onclick="resetGame()">Reset Game</button>
+
+    <!-- Button to show rules -->
+    <button id="rulesButton" onclick="showRules()">Show Rules</button>
+
+    <!-- Popup for rules -->
+    <div id="rulesPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="hideRules()">&times;</span>
+            <h2>Game Rules</h2>
+            <p>
+                <strong>Rock Paper Scissors Lizard Spock - Rules</strong><br>
+                <strong>Choices:</strong> Players can choose from:
+            <ul>
+                <li>Rock</li>
+                <li>Paper</li>
+                <li>Scissors</li>
+                <li>Lizard</li>
+                <li>Spock</li>
+            </ul>
+            <strong>Winning Conditions:</strong>
+            <ul>
+                <li>Rock crushes Scissors and Lizard.</li>
+                <li>Scissors cuts Paper and decapitates Lizard.</li>
+                <li>Paper covers Rock and disproves Spock.</li>
+                <li>Lizard eats Paper and poisons Spock.</li>
+                <li>Spock smashes Scissors and vaporizes Rock.</li>
+            </ul>
+            <strong>How to Play:</strong> The player chooses one of the options, while the computer randomly selects
+            one.
+            Both choices are revealed simultaneously. The winner is determined based on the winning conditions. If both
+            choices are the same, it results in a tie.<br>
+            <em>Note:</em> This version of the game involves a single player competing against a computer, adding an
+            element
+            of unpredictability to each round.
+            </p>
+        </div>
+    </div>
+
+    <!-- Audio for rules narration -->
+    <audio id="rulesNarration" src="assets/sounds/rules-narration.mp3"></audio>
+
+    <!-- Sound effects for game actions -->
+    <audio id="winSound" src="assets/sounds/You Win.mp3"></audio>
+    <audio id="loseSound" src="assets/sounds/You Lose.mp3"></audio>
+    <audio id="tieSound" src="assets/sounds/Its a Draw.mp3"></audio>
+
+    <!-- JavaScript file -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
