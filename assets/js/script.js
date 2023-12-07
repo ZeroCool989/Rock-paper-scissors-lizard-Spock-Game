@@ -1,28 +1,30 @@
 let playerScore = 0;
 let computerScore = 0;
 
-// Function called when player makes a choice
 function playerChoice(playerSelection) {
     const computerSelection = computerChoice();
+    displayChoices(playerSelection, computerSelection);
     const result = determineWinner(playerSelection, computerSelection);
     updateScoreboard();
     document.getElementById('result').innerText = result;
-    playSound(result); // Play sound based on the game result
+    playSound(result);
 }
 
-// Function to update the scoreboard
+function displayChoices(playerSelection, computerSelection) {
+    document.getElementById('playerChoiceImage').style.backgroundImage = `url('assets/images/${playerSelection}.png')`;
+    document.getElementById('computerChoiceImage').style.backgroundImage = `url('assets/images/${computerSelection}.png')`;
+}
+
 function updateScoreboard() {
     document.getElementById('playerScore').innerText = playerScore;
     document.getElementById('computerScore').innerText = computerScore;
 }
 
-// Function to randomly generate computer's choice
 function computerChoice() {
     const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-// Function to determine the winner of the round
 function determineWinner(playerSelection, computerSelection) {
     const winningConditions = {
         rock: ['scissors', 'lizard'],
@@ -35,15 +37,14 @@ function determineWinner(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return "It's a tie!";
     } else if (winningConditions[playerSelection].includes(computerSelection)) {
-        playerScore++; // Increment player score
+        playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}`;
     } else {
-        computerScore++; // Increment computer score
+        computerScore++;
         return `You lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
 
-// Function to play sound based on the result
 function playSound(result) {
     let sound;
     if (result.includes('win')) {
@@ -56,30 +57,24 @@ function playSound(result) {
     sound.play();
 }
 
-// Function to reset the game scores and result display
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
     updateScoreboard();
     document.getElementById('result').innerText = '';
+    document.getElementById('playerChoiceImage').style.backgroundImage = '';
+    document.getElementById('computerChoiceImage').style.backgroundImage = '';
 }
 
-// Function to show rules popup
 function showRules() {
     const popup = document.getElementById('rulesPopup');
-    popup.style.display = 'block';
-
-    // Play rules narration audio
-    const rulesNarration = document.getElementById('rulesNarration');
-    rulesNarration.play();
+    popup.style.display = 'flex'; // Use flex to align with CSS for centering
+    document.getElementById('rulesNarration').play();
 }
 
-// Function to hide rules popup
 function hideRules() {
     const popup = document.getElementById('rulesPopup');
     popup.style.display = 'none';
-
-    // Pause rules narration audio
     const rulesNarration = document.getElementById('rulesNarration');
     rulesNarration.pause();
     rulesNarration.currentTime = 0;

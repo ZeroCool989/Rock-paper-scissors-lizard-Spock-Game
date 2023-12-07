@@ -16,19 +16,16 @@ body {
 
 h1 {
     color: #333;
-}
-
-/* Scoreboard Styles */
-#scoreboard {
-    margin-bottom: 20px;
-}
-
-#scoreboard div {
-    font-size: 20px;
-    color: #555;
+    margin-bottom: 30px;
+    /* Spacing under the title */
 }
 
 /* Choices Buttons Styles */
+#choices {
+    margin-bottom: 30px;
+    /* Spacing under the choices */
+}
+
 #choices button {
     padding: 10px 20px;
     margin: 10px;
@@ -50,9 +47,89 @@ h1 {
     height: auto;
 }
 
+/* Styles for Choice Images */
+#choicesDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    /* Spacing above and below the choices display */
+}
+
+.choiceImage {
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Result Styles */
+#result {
+    margin-bottom: 30px;
+    /* Spacing under the result */
+}
+
+/* Scoreboard Styles */
+#scoreboard {
+    background-color: #4CAF50;
+    /* Dark green background */
+    color: white;
+    /* White text */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    /* Make the scoreboard a block but only as wide as its content */
+    margin-bottom: 20px;
+    /* Spacing under the scoreboard */
+}
+
+#scoreboard div {
+    font-size: 20px;
+    margin: 5px 0;
+    /* Spacing between player and computer scores */
+    font-weight: bold;
+    /* Make the font bold */
+}
+
+#scoreboard div:first-child {
+    border-bottom: 2px solid white;
+    /* Separator between player and computer scores */
+    padding-bottom: 10px;
+    /* Padding at the bottom of the first score */
+}
+
+/* Reset and Rules Buttons Styles */
+#resetButton,
+#rulesButton {
+    padding: 15px 30px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+#resetButton:hover,
+#rulesButton:hover {
+    background-color: #555;
+}
+
+/* Popup Styles */
 /* Popup Styles */
 .popup {
     display: none;
+    /* Initially hidden */
     position: fixed;
     left: 0;
     top: 0;
@@ -70,7 +147,12 @@ h1 {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    max-width: 90%;
+    width: 60%;
+    max-width: 500px;
+    /* Adjust as needed */
+    position: relative;
+    margin: auto;
+    /* Ensures centering in the flex container */
 }
 
 .close {
@@ -80,6 +162,8 @@ h1 {
     font-size: 24px;
     cursor: pointer;
     color: #555;
+    background-color: transparent;
+    border: none;
 }
 
 /* Audio Controls Styles */
