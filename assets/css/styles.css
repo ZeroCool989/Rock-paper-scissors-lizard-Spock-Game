@@ -16,7 +16,7 @@ body {
 
 /* Hero Section Styles */
 #hero {
-    background-image: url('/assets/images/hero_image.png');
+    background-image: url('../images/hero_image.png');
     background-size: contain;
     /* Ensure the entire image is visible */
     background-position: center;
