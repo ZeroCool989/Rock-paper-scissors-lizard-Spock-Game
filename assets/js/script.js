@@ -1,6 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
+let isMuted = false; // Variable to track if the game is muted
 
 function playerChoice(playerSelection) {
     const computerSelection = computerChoice();
@@ -18,7 +19,6 @@ function displayChoices(playerSelection, computerSelection) {
 
     playerChoiceImage.style.backgroundImage = `url('assets/images/${playerSelection}.png')`;
     computerChoiceImage.style.backgroundImage = `url('assets/images/${computerSelection}.png')`;
-    startBouncing();
 }
 
 function updateScoreboard() {
@@ -54,6 +54,8 @@ function determineWinner(playerSelection, computerSelection) {
 }
 
 function playSound(result) {
+    if (isMuted) return; // Don't play sound if muted
+
     let sound;
     if (result.includes('win')) {
         sound = document.getElementById('winSound');
@@ -83,7 +85,7 @@ function startBouncing() {
     playerChoiceImage.style.animation = 'bounceRight 1s ease-in-out infinite';
     computerChoiceImage.style.animation = 'bounceLeft 1s ease-in-out infinite';
 
-    // Stop the bouncing after 3 seconds for both images
+    // Stop the bouncing after 1 second for both images
     setTimeout(function () {
         stopBouncing(playerChoiceImage);
         stopBouncing(computerChoiceImage);
@@ -113,6 +115,18 @@ function toggleAudio() {
         rulesNarration.pause();
         document.getElementById('playPauseAudio').textContent = 'Play Rules Narration';
     }
+}
+
+function toggleMute() {
+    isMuted = !isMuted;
+    const muteButton = document.getElementById('muteButton');
+    muteButton.textContent = isMuted ? 'Unmute Sounds' : 'Mute Sounds';
+
+    // Mute or unmute all audio elements
+    const audios = document.querySelectorAll('audio');
+    audios.forEach(audio => {
+        audio.muted = isMuted;
+    });
 }
 
 function resetAudio() {

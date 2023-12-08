@@ -5,25 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors Lizard Spock Game!</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.png" />
   </head>
 
   <body>
     <div id="hero"></div>
 
-    <!-- Prompt for making a choice -->
-    <p
-      id="choicePrompt"
-      style="
-        text-align: center;
-        color: white;
-        font-size: 1.5em;
-        margin-top: 20px;
-      "
-    >
-      Player, make your choice and choose wisely!
-    </p>
+    <p id="choicePrompt">Player, make your choice and choose wisely!</p>
 
-    <!-- Buttons for player to make a choice -->
     <div id="choices">
       <button type="button" aria-label="Rock" onclick="playerChoice('rock')">
         <img src="assets/images/rock.png" alt="Rock" />
@@ -55,7 +44,6 @@
       </button>
     </div>
 
-    <!-- Choice Display Images -->
     <div id="choicesDisplay">
       <div>
         <span class="choiceLabel">Player's Choice</span>
@@ -67,27 +55,24 @@
       </div>
     </div>
 
-    <!-- Paragraph to display the result of each round -->
     <p id="result"></p>
 
-    <!-- Scoreboard for displaying scores -->
     <div id="scoreboard">
       <div>Player Score: <span id="playerScore">0</span></div>
       <div>Computer Score: <span id="computerScore">0</span></div>
       <div>Draws: <span id="drawScore">0</span></div>
     </div>
 
-    <!-- Button to reset the game -->
     <button type="button" id="resetButton" onclick="resetGame()">
       Reset Game
     </button>
-
-    <!-- Button to show rules -->
     <button type="button" id="rulesButton" onclick="showRules()">
       Show Rules
     </button>
+    <button type="button" id="muteButton" onclick="toggleMute()">
+      Mute Sounds
+    </button>
 
-    <!-- Popup for rules -->
     <div id="rulesPopup" class="popup">
       <div class="popup-content">
         <span class="close" onclick="hideRules()">&times;</span>

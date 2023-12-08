@@ -9,77 +9,62 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #36454F;
-    /* Charcoal color */
     color: white;
-    /* Default text color */
+}
+
+#choicePrompt {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: white;
+    text-align: center;
 }
 
 /* Hero Section Styles */
 #hero {
     background-image: url('../images/hero_image.png');
     background-size: contain;
-    /* Ensure the entire image is visible */
     background-position: center;
-    /* Center the image horizontally and vertically */
     background-repeat: no-repeat;
-    /* Prevent the image from repeating */
     text-align: center;
     padding-top: 50px;
     height: 50vh;
-    /* Set the height to 50% of the viewport height */
 }
 
 /* Choices Container Styles */
 #choices {
     display: flex;
-    flex-direction: row;
-    /* Align items in a row */
     justify-content: center;
-    /* Center the items horizontally */
     flex-wrap: wrap;
-    /* Allow wrapping if the screen is too small */
     gap: 10px;
-    /* Maintain some space between buttons */
     margin-top: 40px;
     margin-bottom: 20px;
-    /* Reduced margin for closer placement */
 }
 
 /* Choice Buttons Styles */
 #choices button {
     width: 200px;
-    /* Set width to 200px */
     height: 200px;
-    /* Set height to 200px */
     padding: 10px;
-    /* Adjust padding as needed */
     border: none;
     border-radius: 5px;
     background-color: #4CAF50;
-    /* Green color */
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
     display: flex;
     align-items: center;
-    /* Center content vertically */
     justify-content: center;
-    /* Center content horizontally */
     flex-direction: column;
-    /* Stack icon and text */
 }
 
 #choices button img {
     max-width: 90%;
-    /* Adjust the size as needed */
     height: auto;
 }
 
-/* Button Hover Effect */
 #choices button:hover {
     background-color: #45a049;
-    /* Darker green on hover */
 }
 
 /* Button Label Styles */
@@ -125,7 +110,6 @@ body {
 /* Scoreboard Styles */
 #scoreboard {
     background-color: #4CAF50;
-    /* Dark green background */
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
@@ -134,7 +118,6 @@ body {
     margin: 20px auto;
 }
 
-/* Scoreboard Text Styles */
 #scoreboard div {
     font-size: 20px;
     margin: 5px 10px;
@@ -146,9 +129,10 @@ body {
     padding-right: 10px;
 }
 
-/* Reset and Rules Button Styles */
+/* Reset, Rules, and Mute Button Styles */
 #resetButton,
-#rulesButton {
+#rulesButton,
+#muteButton {
     padding: 15px 30px;
     font-size: 18px;
     font-weight: bold;
@@ -157,16 +141,15 @@ body {
     width: fit-content;
     border-radius: 5px;
     background-color: #4CAF50;
-    /* Dark grey */
     cursor: pointer;
     border: none;
     transition: background-color 0.3s;
 }
 
 #resetButton:hover,
-#rulesButton:hover {
+#rulesButton:hover,
+#muteButton:hover {
     background-color: #555;
-    /* Darker grey on hover */
 }
 
 /* Popup Styles */
@@ -211,14 +194,14 @@ audio {
     display: none;
 }
 
-/* Play/Pause Audio Button Styles */
-#playPauseAudio {
+/* Play/Pause and Mute Audio Button Styles */
+#playPauseAudio,
+#muteButton {
     padding: 10px 20px;
     margin-top: 20px;
     border: none;
     border-radius: 5px;
     background-color: #4CAF50;
-    /* Green color */
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -226,9 +209,9 @@ audio {
     transition: background-color 0.3s;
 }
 
-#playPauseAudio:hover {
+#playPauseAudio:hover,
+#muteButton:hover {
     background-color: #45a049;
-    /* Darker green on hover */
 }
 
 /* Choices Display Styles */
@@ -236,14 +219,6 @@ audio {
     display: flex;
     justify-content: center;
     gap: 10px;
-}
-
-#playerChoiceImage {
-    animation: bounceRight 1s ease-in-out infinite;
-}
-
-#computerChoiceImage {
-    animation: bounceLeft 1s ease-in-out infinite;
 }
 
 /* Bounce Animation for Choice Images */
@@ -271,7 +246,7 @@ audio {
     }
 }
 
-/* Tablet and Mobile Styles */
+/* Tablet and Mobile Responsive Styles */
 @media screen and (max-width: 768px) {
     #choices button {
         width: 120px;
@@ -297,7 +272,6 @@ audio {
     }
 }
 
-/* Mobile Styles */
 @media screen and (max-width: 480px) {
     #choices button {
         width: 100px;
