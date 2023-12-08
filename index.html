@@ -27,9 +27,11 @@
     <div id="choices">
       <button type="button" aria-label="Rock" onclick="playerChoice('rock')">
         <img src="assets/images/rock.png" alt="Rock" />
+        <span>Rock</span>
       </button>
       <button type="button" aria-label="Paper" onclick="playerChoice('paper')">
         <img src="assets/images/paper.png" alt="Paper" />
+        <span>Paper</span>
       </button>
       <button
         type="button"
@@ -37,6 +39,7 @@
         onclick="playerChoice('scissors')"
       >
         <img src="assets/images/scissors.png" alt="Scissors" />
+        <span>Scissors</span>
       </button>
       <button
         type="button"
@@ -44,16 +47,24 @@
         onclick="playerChoice('lizard')"
       >
         <img src="assets/images/lizard.png" alt="Lizard" />
+        <span>Lizard</span>
       </button>
       <button type="button" aria-label="Spock" onclick="playerChoice('spock')">
         <img src="assets/images/spock.png" alt="Spock" />
+        <span>Spock</span>
       </button>
     </div>
 
     <!-- Choice Display Images -->
     <div id="choicesDisplay">
-      <div id="playerChoiceImage" class="choiceImage"></div>
-      <div id="computerChoiceImage" class="choiceImage"></div>
+      <div>
+        <span class="choiceLabel">Player's Choice</span>
+        <div id="playerChoiceImage" class="choiceImage"></div>
+      </div>
+      <div>
+        <span class="choiceLabel">Computer's Choice</span>
+        <div id="computerChoiceImage" class="choiceImage"></div>
+      </div>
     </div>
 
     <!-- Paragraph to display the result of each round -->

@@ -27,7 +27,6 @@ body {
     padding-top: 50px;
     height: 50vh;
     /* Set the height to 50% of the viewport height */
-    position: relative;
 }
 
 /* Choices Container Styles */
@@ -72,18 +71,23 @@ body {
 }
 
 #choices button img {
-    width: 90%;
-    /* Adjust the width as needed */
-    height: 90%;
-    /* Adjust the height as needed */
-    object-fit: contain;
-    /* This will ensure the image fits well within the button */
+    max-width: 90%;
+    /* Adjust the size as needed */
+    height: auto;
 }
 
 /* Button Hover Effect */
 #choices button:hover {
     background-color: #45a049;
     /* Darker green on hover */
+}
+
+/* Button Label Styles */
+#choices button span {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    font-size: 1em;
 }
 
 /* Choice Image Styles */
@@ -94,6 +98,21 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     margin: 10px 0;
+}
+
+/* Choice Label Styles */
+.choiceLabel {
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+#choicesDisplay>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Result Display Styles */
@@ -156,33 +175,24 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* Center the popup both horizontally and vertically */
     width: 80%;
-    /* Adjust width as needed */
     max-width: 500px;
-    /* Set a max width for larger screens */
     height: auto;
-    /* Auto height based on content */
     background: rgba(0, 0, 0, 0.7);
-    /* Semi-transparent background */
     z-index: 1000;
-    /* Ensure it's on top of other elements */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    /* Optional padding for aesthetics */
 }
 
 .popup-content {
     background: white;
     color: black;
-    /* Text color for popup */
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    /* Center the text inside the popup */
 }
 
 .close {
@@ -225,9 +235,7 @@ audio {
 #choicesDisplay {
     display: flex;
     justify-content: center;
-    /* Align items to the center */
     gap: 10px;
-    /* Reduced gap for closer placement */
 }
 
 #playerChoiceImage {
@@ -248,7 +256,6 @@ audio {
 
     50% {
         transform: translateX(10px);
-        /* Move right */
     }
 }
 
@@ -261,39 +268,30 @@ audio {
 
     50% {
         transform: translateX(-10px);
-        /* Move left */
     }
 }
 
-/* ... existing CSS ... */
-
 /* Tablet and Mobile Styles */
 @media screen and (max-width: 768px) {
-
-    /* Adjust choice buttons */
     #choices button {
         width: 120px;
         height: 120px;
     }
 
-    /* Adjust choice images */
     #choices button img {
         width: 90%;
         height: 90%;
     }
 
-    /* Adjust choice display images */
     .choiceImage {
         width: 200px;
         height: 200px;
     }
 
-    /* Adjust scoreboard font size */
     #scoreboard div {
         font-size: 16px;
     }
 
-    /* Adjust prompt text size */
     #choicePrompt {
         font-size: 1.2em;
     }
@@ -301,31 +299,25 @@ audio {
 
 /* Mobile Styles */
 @media screen and (max-width: 480px) {
-
-    /* Further adjustments for smaller mobile screens */
     #choices button {
         width: 100px;
         height: 100px;
     }
 
-    /* Adjust choice images for smaller screens */
     #choices button img {
         width: 90%;
         height: 90%;
     }
 
-    /* Adjust popup content size for mobile */
     .popup-content {
         width: 90%;
     }
 
-    /* Adjust the font size of the game rules and buttons */
     .popup-content p,
     #playPauseAudio {
         font-size: 0.9em;
     }
 
-    /* Adjust the size of close button in popup */
     .close {
         font-size: 20px;
         top: 15px;
