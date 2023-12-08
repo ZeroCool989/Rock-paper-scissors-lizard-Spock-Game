@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let drawScore = 0;
 
 function playerChoice(playerSelection) {
     const computerSelection = computerChoice();
@@ -8,16 +9,22 @@ function playerChoice(playerSelection) {
     updateScoreboard();
     document.getElementById('result').innerText = result;
     playSound(result);
+    startBouncing();
 }
 
 function displayChoices(playerSelection, computerSelection) {
-    document.getElementById('playerChoiceImage').style.backgroundImage = `url('assets/images/${playerSelection}.png')`;
-    document.getElementById('computerChoiceImage').style.backgroundImage = `url('assets/images/${computerSelection}.png')`;
+    const playerChoiceImage = document.getElementById('playerChoiceImage');
+    const computerChoiceImage = document.getElementById('computerChoiceImage');
+
+    playerChoiceImage.style.backgroundImage = `url('assets/images/${playerSelection}.png')`;
+    computerChoiceImage.style.backgroundImage = `url('assets/images/${computerSelection}.png')`;
+    startBouncing();
 }
 
 function updateScoreboard() {
     document.getElementById('playerScore').innerText = playerScore;
     document.getElementById('computerScore').innerText = computerScore;
+    document.getElementById('drawScore').innerText = drawScore;
 }
 
 function computerChoice() {
@@ -35,7 +42,8 @@ function determineWinner(playerSelection, computerSelection) {
     };
 
     if (playerSelection === computerSelection) {
-        return "It's a tie!";
+        drawScore++;
+        return "It's a draw!";
     } else if (winningConditions[playerSelection].includes(computerSelection)) {
         playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}`;
@@ -60,22 +68,58 @@ function playSound(result) {
 function resetGame() {
     playerScore = 0;
     computerScore = 0;
+    drawScore = 0;
     updateScoreboard();
     document.getElementById('result').innerText = '';
     document.getElementById('playerChoiceImage').style.backgroundImage = '';
     document.getElementById('computerChoiceImage').style.backgroundImage = '';
+    resetAudio();
+}
+
+function startBouncing() {
+    const playerChoiceImage = document.getElementById('playerChoiceImage');
+    const computerChoiceImage = document.getElementById('computerChoiceImage');
+
+    playerChoiceImage.style.animation = 'bounceRight 1s ease-in-out infinite';
+    computerChoiceImage.style.animation = 'bounceLeft 1s ease-in-out infinite';
+
+    // Stop the bouncing after 3 seconds for both images
+    setTimeout(function () {
+        stopBouncing(playerChoiceImage);
+        stopBouncing(computerChoiceImage);
+    }, 1000);
+}
+
+function stopBouncing(imageElement) {
+    imageElement.style.animation = 'none';
 }
 
 function showRules() {
-    const popup = document.getElementById('rulesPopup');
-    popup.style.display = 'flex'; // Use flex to align with CSS for centering
-    document.getElementById('rulesNarration').play();
+    const rulesPopup = document.getElementById('rulesPopup');
+    rulesPopup.style.display = 'block';
 }
 
 function hideRules() {
-    const popup = document.getElementById('rulesPopup');
-    popup.style.display = 'none';
+    const rulesPopup = document.getElementById('rulesPopup');
+    rulesPopup.style.display = 'none';
+}
+
+function toggleAudio() {
     const rulesNarration = document.getElementById('rulesNarration');
-    rulesNarration.pause();
-    rulesNarration.currentTime = 0;
+    if (rulesNarration.paused) {
+        rulesNarration.play();
+        document.getElementById('playPauseAudio').textContent = 'Pause Rules Narration';
+    } else {
+        rulesNarration.pause();
+        document.getElementById('playPauseAudio').textContent = 'Play Rules Narration';
+    }
+}
+
+function resetAudio() {
+    const rulesNarration = document.getElementById('rulesNarration');
+    if (!rulesNarration.paused) {
+        rulesNarration.pause();
+        rulesNarration.currentTime = 0; // Reset audio to start
+        document.getElementById('playPauseAudio').textContent = 'Play Rules Narration';
+    }
 }

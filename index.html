@@ -3,12 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors Lizard Spock</title>
+    <title>Rock Paper Scissors Lizard Spock Game!</title>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
 
   <body>
-    <h1>Rock Paper Scissors Lizard Spock Game</h1>
+    <div id="hero"></div>
+
+    <!-- Prompt for making a choice -->
+    <p
+      id="choicePrompt"
+      style="
+        text-align: center;
+        color: white;
+        font-size: 1.5em;
+        margin-top: 20px;
+      "
+    >
+      Player, make your choice and choose wisely!
+    </p>
 
     <!-- Buttons for player to make a choice -->
     <div id="choices">
@@ -50,6 +63,7 @@
     <div id="scoreboard">
       <div>Player Score: <span id="playerScore">0</span></div>
       <div>Computer Score: <span id="computerScore">0</span></div>
+      <div>Draws: <span id="drawScore">0</span></div>
     </div>
 
     <!-- Button to reset the game -->
@@ -71,8 +85,11 @@
           Scissors cuts paper, paper covers rock, rock crushes lizard, lizard
           poisons Spock, Spock smashes scissors, scissors decapitates lizard,
           lizard eats paper, paper disproves Spock, Spock vaporizes rock, and as
-          it always has been... rock crushes scissors.
+          it always has ... rock crushes scissors.
         </p>
+        <button id="playPauseAudio" onclick="toggleAudio()">
+          Play Rules Narration
+        </button>
       </div>
     </div>
 
